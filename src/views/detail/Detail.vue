@@ -145,7 +145,8 @@ export default {
 
         //方式二：映射方法
         this.addCart(product).then(res => {
-          console.log(res)
+          // console.log(this.$toast)
+          this.$toast.show(res)
         })
     }
   },

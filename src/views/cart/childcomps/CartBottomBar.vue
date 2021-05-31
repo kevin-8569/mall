@@ -7,7 +7,7 @@
     <div class="price">
         合计：{{totalPrice}}
     </div>
-    <div class="total-count">
+    <div class="total-count" @click="countClick">
         去计算({{totalCount}})
     </div>
   </div>
@@ -56,10 +56,14 @@ export default {
         //这里这样简化是不行的，因为每次遍历的时候都把cartList里面的数据改了，但是在计算属性里面用到了cartList
         //这样就会影响计算属性的值了，这样两个地方就会相互影响了，这种就不行。计算属性是不能被改变的
         // this.$store.state.cartList.forEach(val => {val.checked = !this.ischecked})
-
-       
-       }
-  }
+        },
+        //当购物车中没有选中的商品时，提示选择商品
+        countClick(){
+            if(this.totalCount == 0){
+                this.$toast.show('请选择商品')
+            }
+        }
+    }
 };
 </script>
 
